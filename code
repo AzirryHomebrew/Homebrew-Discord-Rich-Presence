@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using DiscordRpcDemo;
+namespace Homebrew_Discord_Rich_Presence
+{
+    public partial class Form1 : Form
+    {
+        private DiscordRpc.EventHandlers handlers;
+        private DiscordRpc.RichPresence presence;
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.handlers = default(DiscordRpc.EventHandlers);
+            DiscordRpc.Initialize("810108276460486667", ref this.handlers, true, null);
+            this.handlers = default(DiscordRpc.EventHandlers);
+            DiscordRpc.Initialize("810108276460486667", ref this.handlers, true, null);
+            this.presence.details = "Created by : Aziiry";
+            this.presence.state = "Develop on visual studio 2019 in C #";
+            this.presence.largeImageKey = "homebrewdiscord";
+            this.presence.smallImageKey = "wiiu";
+            this.presence.largeImageText = "Homebrew Discord";
+            this.presence.smallImageText = "Play WiiU";
+            DiscordRpc.UpdatePresence(ref this.presence);
+        }
+    }
+}
